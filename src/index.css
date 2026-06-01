@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 300% 300%;
+  animation: gradientBG 10s ease infinite;
+}
+
+@layer utilities {
+  .animated-gradient {
+    background: linear-gradient(-45deg, #302b63, #00bf8f, #1CD8D2);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+/* Delay utilities for staggered animations */
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.floating-card {
+  animation: floating 4s ease-in-out infinite;
+}
+
+
+
+@media (max-width: 640px) {
+  body > *:not(#contact):not(footer) {
+    overflow-x: clip;
+  }
+}
+
+/* =====================================================
+   Custom Scrollbar — Glassmorphism + Portfolio Theme
+   Works on Chrome, Edge, Safari (webkit)
+   Firefox fallback via scrollbar-color
+   ===================================================== */
+
+/* Force black base so transparent track never bleeds white */
+html,
+body {
+  background-color: #000;
+  color-scheme: dark;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00bf8f transparent;
+}
+
+/* Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track — fully transparent */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Thumb — animated gradient matching portfolio palette */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #1cd8d2 0%,
+    #00bf8f 50%,
+    #302b63 100%
+  );
+  border-radius: 100px;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 0 8px rgba(28, 216, 210, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Thumb hover — brighter glow */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #1cd8d2 0%,
+    #00bf8f 40%,
+    #4a3f8f 100%
+  );
+  box-shadow:
+    0 0 14px rgba(28, 216, 210, 0.65),
+    0 0 28px rgba(0, 191, 143, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Thumb active (dragging) */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    180deg,
+    #00bf8f 0%,
+    #1cd8d2 100%
+  );
+  box-shadow:
+    0 0 20px rgba(28, 216, 210, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Corner between scrollbars (if both axes shown) */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
