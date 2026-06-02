@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Hide default cursor everywhere — custom cursor handles all states */
+*, *::before, *::after {
+  cursor: none !important;
+}
 
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
