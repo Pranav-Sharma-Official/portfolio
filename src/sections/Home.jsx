@@ -59,7 +59,7 @@ const Home = React.forwardRef((props, ref) => {
     <section
       ref={ref}
       id="home"
-      className="h-screen w-full relative overflow-hidden bg-black"
+      className="min-h-screen w-full relative overflow-hidden bg-black"
     >
       <ParticleBackground />
 
@@ -89,7 +89,7 @@ const Home = React.forwardRef((props, ref) => {
         />
       </div>
 
-      <div className="relative z-10 h-full w-full max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2">
+      <div className="relative z-10 h-full w-full max-w-7xl mx-auto px-4 pt-20 grid grid-cols-1 lg:grid-cols-2">
         {/* left */}
         <motion.div
           className="flex flex-col justify-center h-full text-center lg:text-left relative"
