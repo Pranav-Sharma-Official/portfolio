@@ -18,16 +18,16 @@ const experiences = [
     ],
   },
   {
-    role: "Back End Developer",
-    company: "Wise Tech Labs",
+    role: "Backend Developer Intern",
+    company: "Wise Tech Labs Pvt Ltd",
     duration: "May 2026 – July 2026",
     location: "Jaipur, Rajasthan, India",
     description:
-      "Working as a Back End Developer, contributing to server-side development and building robust, scalable backend solutions.",
+      "Working as a Backend Developer Intern, contributing to server-side development and building robust, scalable backend solutions.",
     highlights: [],
   },
   {
-    role: "Back End Developer",
+    role: "Backend Developer Intern",
     company: "SSNAM Global Marketing Pvt Ltd",
     duration: "May 2026 – July 2026",
     location: "Jaipur, Rajasthan, India",
@@ -41,7 +41,7 @@ const experiences = [
     duration: "Jun 2025 – Jul 2025",
     location: "Jaipur, Rajasthan, India",
     description:
-      "Selected for the Summer Internship Program 2025. Focused on Core Java Programming fundamentals & project-based learning with practical implementations in real-world cases.",
+      "Focused on Core Java Programming fundamentals & project-based learning with practical implementations in real-world cases.",
     highlights: [
       "Improved problem-solving and debugging skills through guided mentorship",
       "Collaborated with peers in a structured learning environment",
