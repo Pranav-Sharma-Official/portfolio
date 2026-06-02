@@ -3,11 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import p from "../assets/p.png";
 import {
   FaLinkedin,
-  FaGithub,
-  FaSpotify,
   FaClock,
   FaStar,
-  FaCodeBranch,
   FaUsers,
 } from "react-icons/fa";
 import { SiLastdotfm } from "react-icons/si";
@@ -131,38 +128,65 @@ function NowPlayingWidget() {
   );
 }
 
-// ─── GitHub Stats ─────────────────────────────────────────────────────────────
-function GitHubStats() {
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("https://api.github.com/users/Pranav-Sharma-Official")
-      .then((r) => r.json())
-      .then((d) => {
-        setStats(d);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+// ─── Preply Tutor Rating ─────────────────────────────────────────────────────
+function PreplyCard() {
+  const metrics = [
+    { label: "Reassurance", score: 4.7 },
+    { label: "Clarity",     score: 4.3 },
+    { label: "Progress",    score: 4.3 },
+    { label: "Preparation", score: 4.0 },
+  ];
+  const overall = 4.3;
 
   return (
     <StatCard
-      icon={<FaGithub className="text-white" size={16} />}
-      title="GitHub"
-      href="https://github.com/Pranav-Sharma-Official"
+      icon={
+        <img
+          src="https://cdn-1.webcatalog.io/catalog/preply/preply-icon-filled-256.png?v=1779064504690"
+          alt="Preply"
+          className="w-4 h-4 rounded-sm"
+        />
+      }
+      title="Preply Tutor"
+      href="https://preply.com/en/tutor/5555978"
     >
-      {loading ? (
-        <p className="text-xs text-gray-500 animate-pulse">Loading…</p>
-      ) : stats ? (
-        <div className="flex gap-4 flex-wrap">
-          <Metric icon={<FaCodeBranch size={11} />} label="Repos" value={stats.public_repos} />
-          <Metric icon={<FaUsers size={11} />} label="Followers" value={stats.followers} />
-          <Metric icon={<FaStar size={11} />} label="Following" value={stats.following} />
+      {/* Overall stars */}
+      <div className="flex items-center gap-2">
+        <div className="flex gap-0.5">
+          {[1, 2, 3, 4, 5].map((s) => (
+            <FaStar
+              key={s}
+              size={12}
+              className={
+                s <= Math.round(overall)
+                  ? "text-yellow-400"
+                  : "text-gray-600"
+              }
+            />
+          ))}
         </div>
-      ) : (
-        <p className="text-xs text-gray-500">Couldn't load stats</p>
-      )}
+        <span className="text-white font-bold text-sm">{overall.toFixed(1)}</span>
+        <span className="text-gray-500 text-xs">/ 5.0</span>
+      </div>
+
+      {/* Individual metrics */}
+      <div className="flex flex-col gap-1.5 w-full mt-1">
+        {metrics.map(({ label, score }) => (
+          <div key={label} className="flex items-center gap-2">
+            <span className="text-[10px] text-gray-500 w-24 shrink-0">{label}</span>
+            <div className="flex-1 h-1 rounded-full bg-white/10">
+              <div
+                className="h-1 rounded-full transition-all duration-700"
+                style={{
+                  width: `${(score / 5) * 100}%`,
+                  background: "linear-gradient(90deg, #1CD8D2, #00bf8f)",
+                }}
+              />
+            </div>
+            <span className="text-[10px] text-gray-400 w-6 text-right shrink-0">{score}</span>
+          </div>
+        ))}
+      </div>
     </StatCard>
   );
 }
@@ -367,7 +391,7 @@ export default function About() {
 
           <NowPlayingWidget />
           <LinkedInCard />
-          <GitHubStats />
+          <PreplyCard />
           <LiveClock />
         </motion.div>
       </div>
