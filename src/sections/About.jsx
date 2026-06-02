@@ -134,7 +134,7 @@ function PreplyCard() {
     { label: "Reassurance", score: 4.7 },
     { label: "Clarity",     score: 4.3 },
     { label: "Progress",    score: 4.3 },
-    { label: "Preparation", score: 4.0 },
+    { label: "Preparation", score: 4.1 },
   ];
   const overall = 4.3;
 
