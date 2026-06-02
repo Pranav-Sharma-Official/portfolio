@@ -73,7 +73,7 @@ function NowPlayingWidget() {
   return (
     <StatCard
       icon={<SiLastdotfm className="text-[#d51007]" size={16} />}
-      title={data?.isPlaying ? "Now Playing" : "Last Played"}
+      title={data?.isPlaying ? "Currently Listening" : "Last Listened"}
     >
       {loading ? (
         <p className="text-xs text-gray-500 animate-pulse">Fetching…</p>
@@ -180,7 +180,7 @@ function LinkedInCard() {
       href="https://www.linkedin.com/in/-pranav--sharma-/"
     >
       <p className="text-2xl font-bold text-white">{FOLLOWER_COUNT}</p>
-      <p className="text-xs text-gray-400">followers · Open to connect</p>
+      <p className="text-xs text-gray-400">Followers · Open to connect</p>
     </StatCard>
   );
 }
