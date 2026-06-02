@@ -20,7 +20,7 @@ const testimonials = [
     name: "Shubham Sharma",
     role: "SDE-III at Nykaa",
     review:
-      "Pranav transformed our outdated platform into something modern and powerful. His skills are world-class.",
+      "I've always admired his dedication and willingness to put in the work to achieve his goals. When he commits to something, he gives it his full attention and doesn't shy away from challenges. He's responsible, reliable, and genuinely eager to learn and improve. What stands out most is his persistence and positive attitude, even when things don't go as planned. I have no doubt that these qualities, along with his passion for technology, will help him succeed as a software engineer.",
     image: w2,
   },
   {
