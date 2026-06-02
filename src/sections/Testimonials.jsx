@@ -41,7 +41,7 @@ const testimonials = [
     name: "Based on 3 anonymous student reviews",
     role: "Preply",
     review:
-      "Pranav's Lesson Rating out of 5.0 • Reassurance - 4.7 • Clarity - 4.3 • Progress - 4.3 • Preparation - 4.0",
+      "Pranav's Lesson Rating out of 5.0 • Reassurance - 4.7 • Clarity - 4.3 • Progress - 4.3 • Preparation - 4.1",
     image: w1,
   },
 ];
