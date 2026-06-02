@@ -171,7 +171,7 @@ function GitHubStats() {
 function LinkedInCard() {
   // LinkedIn has no public API — update this number manually
   // Go to your LinkedIn profile → followers count
-  const FOLLOWER_COUNT = "500+"; // ← update this manually
+  const FOLLOWER_COUNT = "5000+"; // ← update this manually
 
   return (
     <StatCard
