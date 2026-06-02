@@ -3,16 +3,25 @@ import { FaPlay, FaPause } from "react-icons/fa";
 
 const MusicPlayer = () => {
   const playlist = [
-    "/iwasneverthere.mp3",
-    "/escapism.mp3",
-    "/blue.mp3",
-    "/YAD.mp3",
-    "/stars.mp3",
+    "/Chronicles of Me (My Original Creation).mp3",
+    "/Daylight.mp3",
+    "/Perfect.mp3",
+    "/Dusk Till Dawn.mp3",
+    "/7 Years.mp3",
+  ];
+
+  // Clean display names matching playlist order
+  const trackNames = [
+    "Chronicles of Me (My Original Creation)",
+    "Daylight",
+    "Perfect",
+    "Dusk Till Dawn",
+    "7 Years",
   ];
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [infoText, setInfoText] = useState("Wanna play music while scrolling?");
+  const [infoText, setInfoText] = useState("🎵 Optional Background Music");
   const audioRef = useRef(null);
   const lastTapTime = useRef(0);
   const clickTimeout = useRef(null);
@@ -46,7 +55,7 @@ const MusicPlayer = () => {
         p.catch(() => {
           // If blocked, reflect paused state
           setIsPlaying(false);
-          setInfoText("Wanna play music while scrolling?");
+          setInfoText("🎵 Optional Background Music");
         });
       }
       audio.removeEventListener("canplay", onCanPlay);
@@ -58,7 +67,7 @@ const MusicPlayer = () => {
   const playTrack = (index) => {
     setCurrentTrackIndex(index);
     setIsPlaying(true);
-    setInfoText("Double tap to change the music");
+    setInfoText(`🎵 Now Playing: ${trackNames[index]}`);
     setSourceAndMaybePlay(playlist[index], true);
   };
 
@@ -70,12 +79,12 @@ const MusicPlayer = () => {
     if (isPlayingRef.current) {
       audio.pause();
       setIsPlaying(false);
-      setInfoText("Wanna play music while scrolling?");
+      setInfoText("🎵 Optional Background Music");
     } else {
       // Ensure current src is set correctly before playing
       setSourceAndMaybePlay(playlist[currentTrackIndex], true);
       setIsPlaying(true);
-      setInfoText("Double tap to change the music");
+      setInfoText(`🎵 Now Playing: ${trackNames[currentTrackIndex]}`);
     }
   };
 
@@ -91,6 +100,7 @@ const MusicPlayer = () => {
     } while (nextIndex === currentTrackIndex && playlist.length > 1);
 
     setCurrentTrackIndex(nextIndex);
+    if (wasPlaying) setInfoText(`🎵 Now Playing: ${trackNames[nextIndex]}`);
 
     // If paused, only switch source; if playing, switch and continue
     setSourceAndMaybePlay(playlist[nextIndex], wasPlaying);
@@ -160,8 +170,71 @@ const MusicPlayer = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center space-y-2">
-      <p className="text-xs text-gray-300 italic">{infoText}</p>
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+
+      {/* Now Playing pill — visible when playing */}
+      <div
+        style={{
+          opacity: isPlaying ? 1 : 0,
+          transform: isPlaying ? "translateY(0) scale(1)" : "translateY(6px) scale(0.95)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
+          pointerEvents: "none",
+        }}
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium text-white"
+        style={{
+          background: "rgba(0,0,0,0.55)",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(28,216,210,0.3)",
+          boxShadow: "0 0 12px rgba(28,216,210,0.15)",
+          opacity: isPlaying ? 1 : 0,
+          transform: isPlaying ? "translateY(0) scale(1)" : "translateY(6px) scale(0.95)",
+          transition: "opacity 0.4s ease, transform 0.4s ease",
+          pointerEvents: "none",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {/* Animated music bars */}
+        <span className="flex items-end gap-[2px]" style={{ height: "12px" }}>
+          {[1, 2, 3].map((i) => (
+            <span
+              key={i}
+              style={{
+                display: "inline-block",
+                width: "3px",
+                borderRadius: "2px",
+                background: "linear-gradient(to top, #1cd8d2, #00bf8f)",
+                animation: isPlaying ? `musicBar${i} 0.${5 + i}s ease-in-out infinite alternate` : "none",
+                height: isPlaying ? undefined : "4px",
+              }}
+            />
+          ))}
+        </span>
+        <span style={{ color: "#e2e8f0" }}>
+          Now Playing:&nbsp;
+          <span style={{ color: "#1cd8d2", fontWeight: 600 }}>
+            {trackNames[currentTrackIndex]}
+          </span>
+        </span>
+      </div>
+
+      {/* Idle hint — visible when paused */}
+      {!isPlaying && (
+        <p className="text-xs text-gray-400 italic text-right">🎵 Optional Background Music</p>
+      )}
+
+      {/* Double tap hint — visible when playing */}
+      {isPlaying && (
+        <p
+          className="text-xs text-right"
+          style={{
+            color: "rgba(255,255,255,0.35)",
+            letterSpacing: "0.02em",
+            animation: "fadeInHint 0.5s ease forwards",
+          }}
+        >
+          Double tap to play next
+        </p>
+      )}
 
       <audio
         ref={audioRef}
@@ -173,16 +246,27 @@ const MusicPlayer = () => {
       <button
         onClick={handleClick}
         onTouchStart={handleDoubleTapMobile}
-        className="p-4 rounded-full shadow-lg transition transform hover:scale-110"
+        className="p-4 rounded-full shadow-lg transition transform hover:scale-110 self-end"
         style={{
-          background: "linear-gradient(135deg, #00f0ff, #00ff80)",
-          boxShadow: "0 0 15px #00f0ff, 0 0 25px #00ff80",
+          background: "linear-gradient(135deg, #1cd8d2, #00bf8f)",
+          boxShadow: isPlaying
+            ? "0 0 20px rgba(28,216,210,0.7), 0 0 40px rgba(0,191,143,0.4)"
+            : "0 0 10px rgba(28,216,210,0.3)",
           color: "white",
+          transition: "box-shadow 0.3s ease",
         }}
         aria-label={isPlaying ? "Pause music" : "Play music"}
       >
         {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
       </button>
+
+      {/* Keyframes for music bars + hint fade */}
+      <style>{`
+        @keyframes musicBar1 { from { height: 3px; } to { height: 12px; } }
+        @keyframes musicBar2 { from { height: 6px; } to { height: 10px; } }
+        @keyframes musicBar3 { from { height: 4px; } to { height: 12px; } }
+        @keyframes fadeInHint { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+      `}</style>
     </div>
   );
 };
