@@ -81,7 +81,7 @@ export default function Navbar() {
         >
           <img src={Logo} alt="Logo" className="w-8 h-8" />
           <div className="text-2xl font-bold text-white hidden sm:block">
-            Pranav
+            Pranav Sharma
           </div>
         </button>
 
