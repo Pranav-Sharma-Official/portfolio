@@ -173,14 +173,7 @@ const MusicPlayer = () => {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
 
       {/* Now Playing pill — visible when playing */}
-      <div
-        style={{
-          opacity: isPlaying ? 1 : 0,
-          transform: isPlaying ? "translateY(0) scale(1)" : "translateY(6px) scale(0.95)",
-          transition: "opacity 0.4s ease, transform 0.4s ease",
-          pointerEvents: "none",
-        }}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium text-white"
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium text-white"
         style={{
           background: "rgba(0,0,0,0.55)",
           backdropFilter: "blur(12px)",
