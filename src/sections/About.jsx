@@ -195,7 +195,7 @@ function PreplyCard() {
 function LinkedInCard() {
   // LinkedIn has no public API — update this number manually
   // Go to your LinkedIn profile → followers count
-  const FOLLOWER_COUNT = "5.5k+"; // ← update this manually
+  const FOLLOWER_COUNT = "6k+"; // ← update this manually
 
   return (
     <StatCard
