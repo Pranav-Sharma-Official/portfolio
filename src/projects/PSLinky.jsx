@@ -1288,7 +1288,6 @@ function ResourcesSection() {
     { label: "GitHub — Backend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/tree/main/urlshortener", color: "#fff" },
     { label: "GitHub — Frontend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/tree/main/urlshortener-frontend", color: "#fff" },
     { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/repository/docker/pranavsharmaofficial/ps-linky-url-shortener/general", color: "#2496ed" },
-    { label: "Summarised Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/README.md", color: "#a78bfa" },
     { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json", color: "#ff6c37" },
     { label: "Technical Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/PS_Linky_Documentation.md", color: "#a78bfa" },
     { label: "Video Demo", icon: FaPlay, href: "#", color: "#f87171" },
