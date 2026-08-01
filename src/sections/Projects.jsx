@@ -1,9 +1,9 @@
 import React from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 
-import img1   from "../assets/img1.png";
-import img2   from "../assets/img2.JPG";
-import img3   from "../assets/img3.JPG";
+import img1 from "../assets/img1.png";
+import img2 from "../assets/img2.JPG";
+import img3 from "../assets/img3.JPG";
 import photo1 from "../assets/photo1.png";
 import photo2 from "../assets/photo2.PNG";
 import photo3 from "../assets/photo3.png";
@@ -16,15 +16,15 @@ const MH3 = motion.h3;
 // Listens to MediaQueryList change events so it updates on resize.
 
 const MQ = {
-  mobile:  "(max-width: 639px)",
-  tablet:  "(min-width: 640px) and (max-width: 1023px)",
+  mobile: "(max-width: 639px)",
+  tablet: "(min-width: 640px) and (max-width: 1023px)",
   desktop: "(min-width: 1024px)",
 };
 
 function getBreakpoint() {
   if (typeof window === "undefined") return "desktop";
   if (window.matchMedia(MQ.desktop).matches) return "desktop";
-  if (window.matchMedia(MQ.tablet).matches)  return "tablet";
+  if (window.matchMedia(MQ.tablet).matches) return "tablet";
   return "mobile";
 }
 
@@ -33,22 +33,23 @@ function useBreakpoint() {
 
   React.useEffect(() => {
     const entries = Object.values(MQ).map((query) => {
-      const mql     = window.matchMedia(query);
+      const mql = window.matchMedia(query);
       const handler = () => setBp(getBreakpoint());
       mql.addEventListener?.("change", handler) ?? mql.addListener(handler);
       return { mql, handler };
     });
     return () => {
       entries.forEach(({ mql, handler }) => {
-        mql.removeEventListener?.("change", handler) ?? mql.removeListener(handler);
+        mql.removeEventListener?.("change", handler) ??
+          mql.removeListener(handler);
       });
     };
   }, []);
 
   return {
     breakpoint: bp,
-    isMobile:  bp === "mobile",
-    isTablet:  bp === "tablet",
+    isMobile: bp === "mobile",
+    isTablet: bp === "tablet",
     isDesktop: bp === "desktop",
   };
 }
@@ -56,28 +57,28 @@ function useBreakpoint() {
 // ── Per-breakpoint layout config ───────────────────────────────────────────
 const LAYOUT = {
   mobile: {
-    containerWidth:    "85%",
+    containerWidth: "85%",
     containerMaxWidth: "100%",
-    imageHeight:       "h-[62vh]",
-    buttonBottom:      "bottom-20",
-    headingMt:         "mt-4",
-    wrapperMt:         "-mt-4",
+    imageHeight: "h-[62vh]",
+    buttonBottom: "bottom-20",
+    headingMt: "mt-4",
+    wrapperMt: "-mt-4",
   },
   tablet: {
-    containerWidth:    "78%",
+    containerWidth: "78%",
     containerMaxWidth: "860px",
-    imageHeight:       "h-[56vh]",
-    buttonBottom:      "bottom-14",
-    headingMt:         "mt-6",
-    wrapperMt:         "",
+    imageHeight: "h-[56vh]",
+    buttonBottom: "bottom-14",
+    headingMt: "mt-6",
+    wrapperMt: "",
   },
   desktop: {
-    containerWidth:    "85%",
+    containerWidth: "85%",
     containerMaxWidth: "1200px",
-    imageHeight:       "h-[66vh]",
-    buttonBottom:      "bottom-10",
-    headingMt:         "mt-8",
-    wrapperMt:         "",
+    imageHeight: "h-[66vh]",
+    buttonBottom: "bottom-10",
+    headingMt: "mt-8",
+    wrapperMt: "",
   },
 };
 
@@ -86,12 +87,12 @@ const LAYOUT = {
 // imageTablet falls back to imageDesktop when no tablet-specific asset exists.
 const PROJECTS = [
   {
-    title:         "PS Linky",
-    link:          "/projects/ps-linky",
-    bgColor:       "#0c0f1f",
-    imageDesktop:  img1,
-    imageTablet:   tablet1,
-    imageMobile:   photo1,
+    title: "PS Linky",
+    link: "/projects/ps-linky",
+    bgColor: "#0c0f1f",
+    imageDesktop: img1,
+    imageTablet: tablet1,
+    imageMobile: photo1,
   },
   // {
   //   title:         "Gamily",
@@ -121,25 +122,25 @@ function pickImage(project, breakpoint) {
 // ── Title position styles per breakpoint ───────────────────────────────────
 const TITLE_STYLE = {
   mobile: {
-    display:   "block",
+    display: "block",
     textAlign: "center",
-    zIndex:    5,
+    zIndex: 5,
   },
   tablet: {
-    position:  "absolute",
-    top:       "-4.25rem",
-    left:      "50%",
+    position: "absolute",
+    top: "-4.25rem",
+    left: "50%",
     transform: "translateX(-50%)",
     textAlign: "center",
     whiteSpace: "nowrap",
-    zIndex:    5,
+    zIndex: 5,
   },
   desktop: {
-    position:  "absolute",
-    top:       "-5.25rem",
-    left:      "-5%",
+    position: "absolute",
+    top: "-5.25rem",
+    left: "-5%",
     textAlign: "left",
-    zIndex:    5,
+    zIndex: 5,
   },
 };
 
@@ -151,8 +152,8 @@ export default function Projects() {
   const sceneRef = React.useRef(null);
 
   const { scrollYProgress } = useScroll({
-    target:  sceneRef,
-    offset:  ["start start", "end end"],
+    target: sceneRef,
+    offset: ["start start", "end end"],
   });
 
   const thresholds = PROJECTS.map((_, i) => (i + 1) / PROJECTS.length);
@@ -174,27 +175,36 @@ export default function Projects() {
       ref={sceneRef}
       className="relative text-white"
       style={{
-        height:          `${100 * PROJECTS.length}vh`,
+        height: `${100 * PROJECTS.length}vh`,
         backgroundColor: activeProject.bgColor,
-        transition:      "background-color 400ms ease",
+        transition: "background-color 400ms ease",
       }}
     >
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
         {/* Section heading */}
-        <h2 className={`text-3xl font-semibold z-10 text-center ${layout.headingMt}`}>
+        <motion.h2
+          className="text-4xl mt-5 sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] z-10"
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           My Work
-        </h2>
+        </motion.h2>
 
         {/* Project cards */}
-        <div className={`relative w-full flex-1 flex items-center justify-center ${layout.wrapperMt}`}>
+        <div
+          className={`relative w-full flex-1 flex items-center justify-center ${layout.wrapperMt}`}
+        >
           {PROJECTS.map((project, idx) => (
             <div
               key={project.title}
               className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
-                activeIndex === idx ? "opacity-100 z-20" : "opacity-0 z-0 sm:z-10"
+                activeIndex === idx
+                  ? "opacity-100 z-20"
+                  : "opacity-0 z-0 sm:z-10"
               }`}
               style={{
-                width:    layout.containerWidth,
+                width: layout.containerWidth,
                 maxWidth: layout.containerMaxWidth,
               }}
             >
@@ -203,9 +213,9 @@ export default function Projects() {
                 {activeIndex === idx && (
                   <MH3
                     key={project.title}
-                    initial={{    opacity: 0, y: -30 }}
-                    animate={{    opacity: 1, y: 0   }}
-                    exit={{       opacity: 0, y: 30  }}
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 30 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className={`text-[clamp(2rem,6vw,5rem)] text-white/95 font-bangers italic font-semibold ${
                       isMobile ? "-mt-25 block" : "sm:mb-0"
@@ -229,9 +239,9 @@ export default function Projects() {
                   alt={project.title}
                   className="w-full h-full object-cover drop-shadow-xl md:drop-shadow-2xl"
                   style={{
-                    position:  "relative",
-                    zIndex:    10,
-                    filter:    "drop-shadow(0 16px 40px rgba(0,0,0,0.65))",
+                    position: "relative",
+                    zIndex: 10,
+                    filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.65))",
                     transition: "filter 200ms ease",
                   }}
                   loading="lazy"
@@ -240,8 +250,9 @@ export default function Projects() {
                 <div
                   className="pointer-events-none absolute inset-0"
                   style={{
-                    zIndex:     11,
-                    background: "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 40%)",
+                    zIndex: 11,
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 40%)",
                   }}
                 />
               </div>
