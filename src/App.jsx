@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import IntroAnimation from "./components/IntroAnimation";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
@@ -12,7 +14,11 @@ import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 
-export default function App() {
+// Project case study pages
+import PSLinkyPage from "./projects/PSLinky";
+
+// ── Main portfolio single-page layout ────────────────────────────────────────
+function Portfolio() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
@@ -35,5 +41,23 @@ export default function App() {
       <Contact />
       <Footer />
     </div>
+  );
+}
+
+// ── Root app with routing ─────────────────────────────────────────────────────
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Main portfolio */}
+        <Route path="/" element={<Portfolio />} />
+
+        {/* Project case studies */}
+        <Route path="/projects/ps-linky" element={<PSLinkyPage />} />
+
+        {/* Fallback → home */}
+        <Route path="*" element={<Portfolio />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
