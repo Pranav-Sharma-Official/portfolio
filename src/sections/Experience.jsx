@@ -21,7 +21,14 @@ const experiences = [
     location: "Global",
     description:
       "Providing personalized 1-on-1 tutoring in Programming, Cyber Security, and Ethical Hacking to students worldwide. Making complex topics approachable with hands-on practice, real-world examples, and structured learning plans.",
-    techStack: ["Java", "Python", "C/C++", "MySQL", "Cybersecurity", "Teaching"],
+    techStack: [
+      "Java",
+      "Python",
+      "C/C++",
+      "MySQL",
+      "Cybersecurity",
+      "Teaching",
+    ],
     achievements: [
       "Subjects: Java, C/C++, Python, MySQL, Ethical Hacking (Basics to Intermediate), Computer Science",
       "Teaching Approach: Interactive lessons, step-by-step explanations, and practical exercises",
@@ -332,12 +339,22 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4">
+          <motion.h2
+            className="text-4xl mt-5 sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] z-10"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             Experience
-          </h2>
-          <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto">
-            My professional journey and the roles that have shaped my technical expertise.
-          </p>
+          </motion.h2>
+          <motion.p className='mt-2 mb-8 text-white/90 text-base sm:text-lg z-10'
+      initial={{opacity:0 , y: -10}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5 , delay:0.1 }}
+      >
+            My professional journey and the roles that have shaped my technical
+            expertise.
+          </motion.p>
         </motion.div>
 
         {/* Timeline Container */}
