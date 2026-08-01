@@ -1,244 +1,358 @@
-// Importing React for building UI components
 import React from "react";
-// Importing motion components and scroll hooks from Framer Motion for animations
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import {
+  FaBriefcase,
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaLink,
+  FaGithub,
+  FaLinkedin,
+  FaCertificate,
+  FaCheckCircle,
+} from "react-icons/fa";
 
-// Array of experience objects containing job details
 const experiences = [
   {
-    role: "Tutor",
+    id: 1,
     company: "Preply",
+    role: "Tutor",
+    employmentType: "Freelance",
     duration: "Feb 2025 – Present",
     location: "Global",
     description:
       "Providing personalized 1-on-1 tutoring in Programming, Cyber Security, and Ethical Hacking to students worldwide. Making complex topics approachable with hands-on practice, real-world examples, and structured learning plans.",
-    highlights: [
+    techStack: ["Java", "Python", "C/C++", "MySQL", "Cybersecurity", "Teaching"],
+    achievements: [
       "Subjects: Java, C/C++, Python, MySQL, Ethical Hacking (Basics to Intermediate), Computer Science",
       "Teaching Approach: Interactive lessons, step-by-step explanations, and practical exercises",
     ],
+    companyLogo: "",
+    certificate: "",
+    website: "",
+    github: "",
+    linkedin: "",
+    color: "#06b6d4",
+    current: true,
   },
   {
-    role: "Backend Developer Intern",
+    id: 2,
     company: "Wise Tech Labs Pvt Ltd",
+    role: "Backend Developer Intern",
+    employmentType: "Internship",
     duration: "May 2026 – July 2026",
     location: "Jaipur, Rajasthan, India",
     description:
       "Working as a Backend Developer Intern, contributing to server-side development and building robust, scalable backend solutions.",
-    highlights: [],
+    techStack: ["Java", "Spring Boot", "REST APIs", "Backend"],
+    achievements: [],
+    companyLogo: "",
+    certificate: "",
+    website: "",
+    github: "",
+    linkedin: "",
+    color: "#3b82f6", // blue-500
+    current: false,
   },
   {
-    role: "Backend Developer Intern",
+    id: 3,
     company: "SSNAM Global Marketing Pvt Ltd",
+    role: "Backend Developer Intern",
+    employmentType: "Internship",
     duration: "May 2026 – July 2026",
     location: "Jaipur, Rajasthan, India",
     description:
       "Developing and maintaining backend systems and APIs, driving efficient data processing and business logic for the organization.",
-    highlights: [],
+    techStack: ["Java", "Spring Boot", "REST APIs", "PostgreSQL"],
+    achievements: [],
+    companyLogo: "",
+    certificate: "",
+    website: "",
+    github: "",
+    linkedin: "",
+    color: "#6366f1", // indigo-500
+    current: false,
   },
   {
-    role: "Java Intern",
+    id: 4,
     company: "Learn and Build",
+    role: "Java Intern",
+    employmentType: "Internship",
     duration: "Jun 2025 – Jul 2025",
     location: "Jaipur, Rajasthan, India",
     description:
       "Focused on Core Java Programming fundamentals & project-based learning with practical implementations in real-world cases.",
-    highlights: [
+    techStack: ["Java", "OOP", "JDBC", "Core Java"],
+    achievements: [
       "Improved problem-solving and debugging skills through guided mentorship",
       "Collaborated with peers in a structured learning environment",
     ],
+    companyLogo: "",
+    certificate: "",
+    website: "",
+    github: "",
+    linkedin: "",
+    color: "#14b8a6", // teal-500
+    current: false,
   },
 ];
 
-// Reusable component to render each experience item with animations
-function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
-  // Animates the size of the marker (dot) as user scrolls
-  const markerScale = useTransform(scrollYProgress, [start, end], [0, 1]);
-  // Animates the opacity of the marker
-  const markerOpacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-  // Animates the opacity of the card
-  const cardOpacity = useTransform(scrollYProgress, [start, end], [0, 1]);
+function ExperienceCard({ exp }) {
+  const isCurrent = exp.current;
 
-  // Checks if card should be displayed above or below the timeline line
-  const isAbove = idx % 2 === 0;
-  // Animates vertical movement of cards for desktop layout
-  const cardY = useTransform(scrollYProgress, [start, end], [isAbove ? 30 : -30, 0]);
-  // Animates horizontal movement of cards for mobile layout
-  const cardX = useTransform(scrollYProgress, [start, end], [-24, 0]);
-
-  // Render for Desktop layout
-  if (layout === "desktop") {
-    return (
-      <div className="relative flex-1 flex justify-center items-center min-w-0" key={`${exp.company}-${exp.role}-${idx}`}>
-        {/* Marker dot on the timeline */}
-        <motion.div
-          className="z-10 w-7 h-7 rounded-full bg-white shadow-[0_0_0_8px_rgba(255,255,255,0.1)]"
-          style={{ scale: markerScale, opacity: markerOpacity }}
-        />
-        {/* Small vertical line above or below the marker */}
-        <motion.div
-          className={`absolute ${isAbove ? "-top-8" : "-bottom-8"} w-[3px] bg-white/40`}
-          style={{ height: 40, opacity: cardOpacity }}
-        />
-        {/* Experience card with role, company, duration, description */}
-        <motion.article
-          className={`absolute ${isAbove ? "bottom-12" : "top-12"} bg-gray-900/80 backdrop-blur border border-gray-700/70 rounded-xl p-7 w-[340px] shadow-lg`}
-          style={{ opacity: cardOpacity, y: cardY, maxWidth: "90vw" }}
-          transition={{ duration: 0.4, delay: idx * 0.15 }}
-        >
-          <h3 className="text-xl font-semibold">{exp.role}</h3>
-          <p className="text-md text-blue-400 font-medium">{exp.company}</p>
-          <p className="text-sm text-gray-400 mb-1">{exp.duration}</p>
-          {exp.location && (
-            <p className="text-xs text-gray-500 mb-3">📍 {exp.location}</p>
-          )}
-          <p className="text-sm text-gray-300 break-words mb-2">{exp.description}</p>
-          {exp.highlights && exp.highlights.length > 0 && (
-            <ul className="mt-2 space-y-1">
-              {exp.highlights.map((h, i) => (
-                <li key={i} className="text-xs text-gray-400 flex items-start gap-1">
-                  <span className="text-blue-400 mt-0.5">→</span>
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </motion.article>
-      </div>
-    );
-  }
-
-  // Render for Mobile layout
   return (
-    <div key={`${exp.company}-${exp.role}-m-${idx}`} className="relative flex items-start">
-      {/* Marker dot on mobile timeline */}
+    <article className="relative pl-12 md:pl-24 w-full">
+      {/* Timeline Node */}
       <motion.div
-        className="absolute -left-[14px] top-3 z-10 w-7 h-7 rounded-full bg-white shadow-[0_0_0_8px_rgba(255,255,255,0.1)]"
-        style={{ scale: markerScale, opacity: markerOpacity }}
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="absolute left-[20px] md:left-[40px] top-8 md:top-10 -translate-x-1/2 w-4 h-4 md:w-5 md:h-5 rounded-full z-10"
+        style={{
+          backgroundColor: exp.color,
+          boxShadow: isCurrent
+            ? `0 0 20px ${exp.color}`
+            : `0 0 10px ${exp.color}40`,
+          border: isCurrent ? `2px solid #ffffff` : `2px solid ${exp.color}`,
+        }}
       />
-      {/* Experience card (mobile version) */}
-      <motion.article
-        className="bg-gray-900/80 backdrop-blur border border-gray-700/70 rounded-xl p-5 w-[90vw] max-w-sm ml-6 shadow-lg"
-        style={{ opacity: cardOpacity, x: cardX }}
-        transition={{ duration: 0.4, delay: idx * 0.15 }}
+
+      {/* Horizontal Connector Line */}
+      <div className="absolute left-[20px] md:left-[40px] top-8 md:top-10 w-[28px] md:w-[56px] h-[2px] overflow-hidden z-0 mt-[7px] md:mt-[9px]">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="w-full h-full origin-left"
+          style={{ backgroundColor: exp.color, opacity: 0.4 }}
+        />
+      </div>
+
+      {/* Experience Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className={`relative group bg-[#0a0a0a]/80 backdrop-blur-md border ${
+          isCurrent ? "border-cyan-500/40" : "border-white/10"
+        } rounded-2xl p-6 md:p-8 hover:border-white/20 transition-all duration-500 overflow-hidden`}
+        style={{
+          boxShadow: isCurrent
+            ? `0 0 30px ${exp.color}15`
+            : "0 10px 30px rgba(0,0,0,0.5)",
+        }}
       >
-        <h3 className="text-lg font-semibold break-words">{exp.role}</h3>
-        <p className="text-sm text-blue-400 font-medium">{exp.company}</p>
-        <p className="text-xs text-gray-400 mb-1">{exp.duration}</p>
-        {exp.location && (
-          <p className="text-xs text-gray-500 mb-2">📍 {exp.location}</p>
-        )}
-        <p className="text-sm text-gray-300 break-words mb-2">{exp.description}</p>
-        {exp.highlights && exp.highlights.length > 0 && (
-          <ul className="mt-1 space-y-1">
-            {exp.highlights.map((h, i) => (
-              <li key={i} className="text-xs text-gray-400 flex items-start gap-1">
-                <span className="text-blue-400 mt-0.5">→</span>
-                <span>{h}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </motion.article>
-    </div>
+        {/* Dynamic Glow Behind Card on Hover */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at 50% 0%, ${exp.color}, transparent 70%)`,
+          }}
+        />
+
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 relative z-10">
+          <div className="flex-1 space-y-4">
+            {/* Header section */}
+            <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-2xl font-bold text-white tracking-tight leading-tight">
+                    {exp.role}
+                  </h3>
+                  {isCurrent && (
+                    <span
+                      className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase animate-pulse shrink-0"
+                      style={{
+                        backgroundColor: `${exp.color}20`,
+                        color: exp.color,
+                        border: `1px solid ${exp.color}40`,
+                      }}
+                    >
+                      Current
+                    </span>
+                  )}
+                </div>
+                <div
+                  className="flex flex-wrap items-center gap-2 text-lg font-medium"
+                  style={{ color: exp.color }}
+                >
+                  <FaBriefcase className="w-4 h-4 shrink-0" />
+                  <span>{exp.company}</span>
+                  {exp.employmentType && (
+                    <>
+                      <span className="text-gray-600 hidden sm:inline">•</span>
+                      <span className="text-gray-400 text-sm">
+                        {exp.employmentType}
+                      </span>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Duration and Location */}
+              <div className="flex flex-col xl:items-end gap-1.5 text-sm text-gray-400 shrink-0">
+                <div className="flex items-center gap-2">
+                  <FaCalendarAlt className="w-3.5 h-3.5 text-gray-500" />
+                  <span>{exp.duration}</span>
+                </div>
+                {exp.location && (
+                  <div className="flex items-center gap-2">
+                    <FaMapMarkerAlt className="w-3.5 h-3.5 text-gray-500" />
+                    <span>{exp.location}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Main Description */}
+            <p className="text-gray-300 leading-relaxed text-sm md:text-base pt-1">
+              {exp.description}
+            </p>
+
+            {/* Achievements List */}
+            {exp.achievements?.length > 0 && (
+              <div className="space-y-2.5 pt-2">
+                {exp.achievements.map((achieve, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
+                    className="flex items-start gap-3"
+                  >
+                    <FaCheckCircle
+                      className="w-4 h-4 mt-1 shrink-0"
+                      style={{ color: exp.color }}
+                    />
+                    <span className="text-gray-300 text-sm leading-relaxed">
+                      {achieve}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+
+            {/* Tech Stack Chips */}
+            {exp.techStack?.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-4">
+                {exp.techStack.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10 hover:text-white transition-colors cursor-default"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* External Links / Buttons */}
+            {(exp.website || exp.github || exp.linkedin || exp.certificate) && (
+              <div className="flex flex-wrap gap-3 pt-5 mt-2 border-t border-white/5">
+                {exp.website && (
+                  <a
+                    href={exp.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-all"
+                  >
+                    <FaLink /> Website
+                  </a>
+                )}
+                {exp.github && (
+                  <a
+                    href={exp.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-all"
+                  >
+                    <FaGithub /> GitHub
+                  </a>
+                )}
+                {exp.linkedin && (
+                  <a
+                    href={exp.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-all"
+                  >
+                    <FaLinkedin /> LinkedIn
+                  </a>
+                )}
+                {exp.certificate && (
+                  <a
+                    href={exp.certificate}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-medium text-white/70 hover:text-white bg-white/5 hover:bg-white/10 px-3 py-2 rounded-lg transition-all"
+                  >
+                    <FaCertificate /> Certificate
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Optional Company Logo */}
+          {exp.companyLogo && (
+            <div className="hidden md:flex shrink-0 w-16 h-16 rounded-xl overflow-hidden border border-white/10 bg-white/5 p-2 items-center justify-center">
+              <img
+                src={exp.companyLogo}
+                alt={exp.company}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </article>
   );
 }
 
-// Main Experience component
-const Experience = () => {
-  const sceneRef = React.useRef(null); // Ref for the scrolling section
-  const [isMobile, setIsMobile] = React.useState(false); // State to track if device is mobile
-
-  // Detect window size and set isMobile state
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // Dynamic scene height based on device type and number of experiences
-  const SCENE_HEIGHT_VH = isMobile ? 100 * experiences.length * 1.6 : 100 * experiences.length * 1.2;
-
-  // Get scroll progress for animations
-  const { scrollYProgress } = useScroll({ target: sceneRef, offset: ["start start", "end end"] });
-
-  // Calculate thresholds for each experience card's animation start/end
-  const numExperiences = experiences.length;
-  const thresholds = React.useMemo(
-    () => Array.from({ length: numExperiences }, (_, i) => (i + 1) / numExperiences),
-    [numExperiences]
-  );
-
-  // Animate timeline line width (desktop) and height (mobile)
-  const lineWidth = useTransform(scrollYProgress, (v) => `${v * 100}%`);
-  const lineHeight = useTransform(scrollYProgress, (v) => `${v * 100}%`);
-
+export default function Experience() {
   return (
-    <section id="experience" className="relative bg-black text-white">
-      {/* Main container with dynamic height */}
-      <div ref={sceneRef} style={{ height: `${SCENE_HEIGHT_VH}vh`, minHeight: "120vh" }} className="relative">
-        <div className="sticky top-0 h-screen flex flex-col">
-          {/* Section Title */}
-          <div className="shrink-0 px-6 pt-8">
-            <h2 className="text-4xl sm:text-5xl font-semibold mt-5 text-center">Experience</h2>
-          </div>
-          {/* Timeline container */}
-          <div className="flex-1 flex items-center justify-center px-6 pb-10">
-            {/* Desktop Timeline */}
-            <div className="relative w-full max-w-7xl hidden md:block">
-              {/* Horizontal timeline line */}
-              <div className="relative h-[6px] bg-white/15 rounded">
-                <motion.div className="absolute left-0 top-0 h-[6px] bg-white rounded origin-left" style={{ width: lineWidth }} />
-              </div>
-              {/* Experience items mapped for desktop */}
-              <div className="relative flex justify-between mt-0">
-                {experiences.map((exp, idx) => {
-                  const start = idx === 0 ? 0 : thresholds[idx - 1];
-                  const end = thresholds[idx];
-                  return (
-                    <ExperienceItem
-                      key={`${exp.company}-${exp.role}-${idx}`}
-                      exp={exp}
-                      idx={idx}
-                      start={start}
-                      end={end}
-                      scrollYProgress={scrollYProgress}
-                      layout="desktop"
-                    />
-                  );
-                })}
-              </div>
-            </div>
-            {/* Mobile Timeline */}
-            <div className="relative w-full max-w-md md:hidden">
-              {/* Vertical timeline line */}
-              <div className="absolute left-0 top-0 bottom-0 w-[6px] bg-white/15 rounded">
-                <motion.div className="absolute top-0 left-0 w-[6px] bg-white rounded origin-top" style={{ height: lineHeight }} />
-              </div>
-              {/* Experience items mapped for mobile */}
-              <div className="relative flex flex-col gap-10 ml-10 mt-6 pb-28">
-                {experiences.map((exp, idx) => {
-                  const start = idx === 0 ? 0 : thresholds[idx - 1];
-                  const end = thresholds[idx];
-                  return (
-                    <ExperienceItem
-                      key={`${exp.company}-${exp.role}-m-${idx}`}
-                      exp={exp}
-                      idx={idx}
-                      start={start}
-                      end={end}
-                      scrollYProgress={scrollYProgress}
-                      layout="mobile"
-                    />
-                  );
-                })}
-              </div>
-            </div>
+    <section
+      id="experience"
+      aria-label="Work Experience"
+      className="relative w-full min-h-screen bg-[#050505] text-white py-24 overflow-hidden"
+    >
+      {/* Background Ambient Glows */}
+      <div className="absolute top-40 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-40 right-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 md:mb-24"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4">
+            Experience
+          </h2>
+          <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto">
+            My professional journey and the roles that have shaped my technical expertise.
+          </p>
+        </motion.div>
+
+        {/* Timeline Container */}
+        <div className="relative">
+          {/* Main Vertical Timeline Line */}
+          <div className="absolute left-[20px] md:left-[40px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-cyan-500/50 via-blue-500/20 to-transparent rounded-full" />
+
+          {/* Experience Cards List */}
+          <div role="list" className="flex flex-col gap-10 md:gap-16">
+            {experiences.map((exp) => (
+              <ExperienceCard key={exp.id} exp={exp} />
+            ))}
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Experience; // Exporting Experience component
+}
