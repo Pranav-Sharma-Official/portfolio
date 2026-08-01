@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 
