@@ -236,7 +236,7 @@ export default function Contact() {
                       className="flex flex-col gap-1.5 overflow-hidden"
                     >
                       <label className="text-sm font-medium text-gray-300 ml-1">
-                        Estimated Budget ($) <span className="text-cyan-500">*</span>
+                        Estimated Budget (₹) <span className="text-cyan-500">*</span>
                       </label>
                       <input
                         type="text"
