@@ -45,7 +45,7 @@ export default function Contact() {
     const newErrors = {};
 
     required.forEach(
-      (f) => !formData[f].trim() && (newErrors[f] = "Fill this field")
+      (f) => !formData[f].trim() && (newErrors[f] = "Fill this field"),
     );
 
     if (formData.service !== "other" && !formData.budget.trim())
@@ -71,11 +71,11 @@ export default function Contact() {
           from_name: formData.name,
           reply_to: formData.email,
         },
-        PUBLIC_KEY
+        PUBLIC_KEY,
       );
 
       setStatus("success");
-      setFormData({name: "",email: "",service: "",budget: "",idea: ""});
+      setFormData({ name: "", email: "", service: "", budget: "", idea: "" });
     } catch (err) {
       console.error("EmailJS Error:", err);
       setStatus("error");
@@ -84,11 +84,11 @@ export default function Contact() {
 
   return (
     <section
-      id="contact" className="w-full min-h-screen relative bg-black overflow-hidden text-white py-20 px-6 md:px-20 flex flex-col md:flex-row items-center gap-10">
+      id="contact"
+      className="w-full min-h-screen relative bg-black overflow-hidden text-white py-20 px-6 md:px-20 flex flex-col md:flex-row items-center gap-10"
+    >
       {/* Particles Background */}
       <ParticlesBackground />
-
-  
 
       {/* Contact Section Content */}
       <div className="relative z-10 w-full flex flex-col md:flex-row items-center gap-10">
@@ -115,7 +115,14 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="w-full md:w-1/2 bg-white/5 p-8 rounded-2xl shadow-lg border border-white/10"
         >
-          <h2 className="text-3xl font-bold mb-6">Let’s Work Together</h2>
+          <motion.h2
+            className="text-4xl mt-5 sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] z-10 mb-16"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Let’s Work Together
+          </motion.h2>
 
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             {/* Name field */}
@@ -244,15 +251,15 @@ export default function Contact() {
                   status === "success"
                     ? "text-green-400"
                     : status === "error"
-                    ? "text-red-400"
-                    : "text-yellow-400"
+                      ? "text-red-400"
+                      : "text-yellow-400"
                 }`}
               >
                 {status === "sending"
                   ? "Sending..."
                   : status === "success"
-                  ? "Message sent successfully ✅"
-                  : "Something went wrong ❌"}
+                    ? "Message sent successfully ✅"
+                    : "Something went wrong ❌"}
               </p>
             )}
 
