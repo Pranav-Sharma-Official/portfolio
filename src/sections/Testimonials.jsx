@@ -41,7 +41,7 @@ const testimonials = [
     name: "Based on 3 anonymous student reviews",
     role: "Preply",
     review:
-      "Pranav's Lesson Rating out of 5.0 • Reassurance - 4.7 • Clarity - 4.3 • Progress - 4.3 • Preparation - 4.1",
+      "Pranav's Lesson Rating out of 5.0 • Reassurance - 4.7 • Clarity - 4.3 • Progress - 4.3 • Preparation - 4.0",
     image: w1,
   },
 ];
@@ -56,14 +56,14 @@ function Testimonials() {
       // Makes this section full-screen height, black background, white text, centered content
     >
       {/* Animated Section Title */}
-      <MH2
-        initial={{ opacity: 0, y: -50 }} // Start invisible & slightly above
-        animate={{ opacity: 1, y: 0 }} // Fade in & slide down
-        transition={{ duration: 0.6 }} // Animation duration is 0.6s
-        className="text-4xl font-bold mb-16" // Styling for title
+      <motion.h2
+        className="text-4xl mt-5 sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] z-10 mb-16"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
         What People Say
-      </MH2>
+      </motion.h2>
 
       {/* Grid for all testimonial cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 max-w-6xl w-full">
@@ -88,9 +88,7 @@ function Testimonials() {
             />
 
             {/* Testimonial Review Text */}
-            <p className="text-gray-200 italic mb-4">
-              "{testi.review}"
-            </p>
+            <p className="text-gray-200 italic mb-4">"{testi.review}"</p>
 
             {/* Name of the person */}
             <h3 className="text-lg font-semibold">{testi.name}</h3>
