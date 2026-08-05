@@ -1,4 +1,4 @@
-import { FaJava, FaReact, FaDatabase, FaGit } from 'react-icons/fa';
+import { FaJava, FaReact, FaDatabase, FaGit, FaFigma } from 'react-icons/fa';
 import { SiSpring, SiPython, SiDocker, SiMysql, SiCplusplus } from 'react-icons/si';
 import { MdApi } from 'react-icons/md';
 import { motion, useMotionValue } from 'framer-motion';
@@ -10,6 +10,7 @@ export default function Skills() {
 const skills = [
     { icon: <FaJava />, name: "Java" },
     { icon: <FaReact />, name: "React" },
+    { icon: <FaFigma />, name: "Figma" },
     { icon: <FaGit />, name: "Git" },
     { icon: <SiSpring />, name: "Spring" },
     { icon: <SiMysql />, name: "SQL" },
