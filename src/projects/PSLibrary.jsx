@@ -180,7 +180,6 @@ function HeroSection() {
   const buttons = [
     { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-lms", primary: true },
     { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/r/pranavsharmaofficial/ps-lms" },
-    { label: "Hoppscotch", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-lms/blob/main/docs/Hoppscotch_Export.json" },
     { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-lms/blob/main/docs/Hoppscotch_Export.json" },
     { label: "Summarised Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-lms/blob/main/README.md" },
     { label: "Portfolio", icon: FaGlobe, href: "/" },
