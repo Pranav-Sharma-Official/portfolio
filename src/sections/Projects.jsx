@@ -2,12 +2,13 @@ import React from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
 
 import img1 from "../assets/img1.png";
-import img2 from "../assets/img2.JPG";
+import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.JPG";
 import photo1 from "../assets/photo1.png";
 import photo2 from "../assets/photo2.png";
 import photo3 from "../assets/photo3.png";
 import tablet1 from "../assets/tablet1.png";
+import tablet2 from "../assets/tablet2.png";
 
 const MH3 = motion.h3;
 
@@ -59,7 +60,7 @@ const LAYOUT = {
   mobile: {
     containerWidth: "85%",
     containerMaxWidth: "100%",
-    imageHeight: "h-[62vh]",
+    imageHeight: "h-[30vh]",
     buttonBottom: "bottom-20",
     headingMt: "mt-4",
     wrapperMt: "-mt-4",
@@ -67,7 +68,7 @@ const LAYOUT = {
   tablet: {
     containerWidth: "78%",
     containerMaxWidth: "860px",
-    imageHeight: "h-[56vh]",
+    imageHeight: "h-[42vh]",
     buttonBottom: "bottom-14",
     headingMt: "mt-6",
     wrapperMt: "",
@@ -75,7 +76,7 @@ const LAYOUT = {
   desktop: {
     containerWidth: "85%",
     containerMaxWidth: "1200px",
-    imageHeight: "h-[66vh]",
+    imageHeight: "h-[50vh]",
     buttonBottom: "bottom-10",
     headingMt: "mt-8",
     wrapperMt: "",
@@ -94,14 +95,14 @@ const PROJECTS = [
     imageTablet: tablet1,
     imageMobile: photo1,
   },
-  // {
-  //   title:         "Gamily",
-  //   link:          "https://gamilyapp.com/",
-  //   bgColor:       "#3884d3",
-  //   imageDesktop:  img2,
-  //   imageTablet:   img2,
-  //   imageMobile:   photo2,
-  // },
+  {
+    title:         "PS Library",
+    link:          "/projects/ps-library",
+    bgColor:       "#0e192d",
+    imageDesktop:  img2,
+    imageTablet:   tablet2,
+    imageMobile:   photo2,
+  },
   // {
   //   title:         "Hungry Tiger",
   //   link:          "https://www.eathungrytiger.com/",
@@ -237,7 +238,7 @@ export default function Projects() {
                 <img
                   src={pickImage(project, breakpoint)}
                   alt={project.title}
-                  className="w-full h-full object-cover drop-shadow-xl md:drop-shadow-2xl"
+                  className="w-full h-full object-contain drop-shadow-xl md:drop-shadow-2xl"
                   style={{
                     position: "relative",
                     zIndex: 10,
