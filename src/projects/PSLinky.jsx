@@ -1289,6 +1289,8 @@ function ResourcesSection() {
     { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/r/pranavsharmaofficial/ps-linky-url-shortener", color: "#2496ed" },
     { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json", color: "#ff6c37" },
     { label: "Technical Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/PS_Linky_Documentation.md", color: "#a78bfa" },
+    { label: "Portfolio", icon: FaGlobe, href: "/", color: "#1CD8D2" },
+    { label: "LinkedIn", icon: FaLinkedin, href: "https://www.linkedin.com/in/-pranav--sharma-/", color: "#0A66C2" },
   ];
 
   return (
