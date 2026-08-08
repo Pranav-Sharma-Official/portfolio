@@ -16,6 +16,7 @@ import MusicPlayer from "./components/MusicPlayer";
 
 // Project case study pages
 import PSLinkyPage from "./projects/PSLinky";
+import PSLibraryPage from "./projects/PSLibrary";
 
 // ── Main portfolio single-page layout ────────────────────────────────────────
 function Portfolio() {
@@ -54,6 +55,7 @@ export default function App() {
 
         {/* Project case studies */}
         <Route path="/projects/ps-linky" element={<PSLinkyPage />} />
+        <Route path="/projects/ps-library" element={<PSLibraryPage />} />
 
         {/* Fallback → home */}
         <Route path="*" element={<Portfolio />} />
