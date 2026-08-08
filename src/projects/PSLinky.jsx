@@ -191,6 +191,7 @@ function HeroSection() {
     { label: "Docker", icon: FaDocker, href: "https://hub.docker.com/r/pranavsharmaofficial/ps-linky-url-shortener" },
     { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json" },
     { label: "Summarised Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/README.md" },
+    { label: "Portfolio", icon: FaGlobe, href: "/" },
   ];
 
   return (
