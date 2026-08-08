@@ -1283,8 +1283,8 @@ function TimelineSection() {
 // ─────────────────────────────────────────────────────────────────────────────
 function ResourcesSection() {
   const resources = [
-    { label: "GitHub — Backend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
-    { label: "GitHub — Frontend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
+    { label: "GitHub — Backend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/tree/main/urlshortener", color: "#fff" },
+    { label: "GitHub — Frontend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/tree/main/urlshortener-frontend", color: "#fff" },
     { label: "Live Demo", icon: FaGlobe, href: "https://ps-linky.netlify.app/", color: "#1CD8D2" },
     { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/r/pranavsharmaofficial/ps-linky-url-shortener", color: "#2496ed" },
     { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json", color: "#ff6c37" },
