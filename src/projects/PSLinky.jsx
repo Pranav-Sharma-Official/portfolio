@@ -187,10 +187,10 @@ function HeroSection() {
 
   const buttons = [
     { label: "Live Demo", icon: FaGlobe, href: "https://ps-linky.netlify.app/", primary: true },
-    { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener" },
+    { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official" },
     { label: "Docker", icon: FaDocker, href: "https://hub.docker.com/repository/docker/pranavsharmaofficial/ps-linky-url-shortener/general" },
-    { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json" },
-    { label: "Summarised Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/README.md" },
+    { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "#" },
+    { label: "Summarised Documentation", icon: FaBook, href: "#" },
   ];
 
   return (
@@ -1283,13 +1283,12 @@ function TimelineSection() {
 // ─────────────────────────────────────────────────────────────────────────────
 function ResourcesSection() {
   const resources = [
+    { label: "GitHub — Backend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
+    { label: "GitHub — Frontend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
     { label: "Live Demo", icon: FaGlobe, href: "https://ps-linky.netlify.app/", color: "#1CD8D2" },
-    { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
-    { label: "GitHub — Backend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/tree/main/urlshortener", color: "#fff" },
-    { label: "GitHub — Frontend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/tree/main/urlshortener-frontend", color: "#fff" },
     { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/repository/docker/pranavsharmaofficial/ps-linky-url-shortener/general", color: "#2496ed" },
-    { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json", color: "#ff6c37" },
-    { label: "Technical Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/PS_Linky_Documentation.md", color: "#a78bfa" },
+    { label: "Postman Collection", icon: FaBoxOpen, href: "#", color: "#ff6c37" },
+    { label: "Documentation", icon: FaBook, href: "#", color: "#a78bfa" },
     { label: "Video Demo", icon: FaPlay, href: "#", color: "#f87171" },
   ];
 
@@ -1447,12 +1446,6 @@ function FooterCTA() {
             className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 text-white font-semibold text-sm hover:border-white/40 hover:bg-white/10 transition-all hover:scale-105"
           >
             <FaGithub size={16} /> GitHub
-          </a>
-          <a
-            href="/"
-            className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 text-white font-semibold text-sm hover:border-white/40 hover:bg-white/10 transition-all hover:scale-105"
-          >
-            <FaGlobe size={16} /> Portfolio
           </a>
         </div>
         <div className="mt-16 pt-8 border-t border-white/[0.06] text-sm text-gray-600">
