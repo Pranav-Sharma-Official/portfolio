@@ -189,8 +189,8 @@ function HeroSection() {
     { label: "Live Demo", icon: FaGlobe, href: "https://ps-linky.netlify.app/", primary: true },
     { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official" },
     { label: "Docker", icon: FaDocker, href: "https://hub.docker.com/repository/docker/pranavsharmaofficial/ps-linky-url-shortener/general" },
-    { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "#" },
-    { label: "Summarised Documentation", icon: FaBook, href: "#" },
+    { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json" },
+    { label: "Summarised Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/README.md" },
   ];
 
   return (
@@ -1286,10 +1286,9 @@ function ResourcesSection() {
     { label: "GitHub — Backend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
     { label: "GitHub — Frontend", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official", color: "#fff" },
     { label: "Live Demo", icon: FaGlobe, href: "https://ps-linky.netlify.app/", color: "#1CD8D2" },
-    { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/repository/docker/pranavsharmaofficial/ps-linky-url-shortener/general", color: "#2496ed" },
-    { label: "Postman Collection", icon: FaBoxOpen, href: "#", color: "#ff6c37" },
-    { label: "Documentation", icon: FaBook, href: "#", color: "#a78bfa" },
-    { label: "Video Demo", icon: FaPlay, href: "#", color: "#f87171" },
+    { label: "Docker Hub", icon: FaDocker, href: "https://hub.docker.com/r/pranavsharmaofficial/ps-linky-url-shortener", color: "#2496ed" },
+    { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json", color: "#ff6c37" },
+    { label: "Technical Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/PS_Linky_Documentation.md", color: "#a78bfa" },
   ];
 
   return (
