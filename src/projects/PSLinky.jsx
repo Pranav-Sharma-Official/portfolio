@@ -1448,6 +1448,12 @@ function FooterCTA() {
           >
             <FaGithub size={16} /> GitHub
           </a>
+          <a
+            href="/"
+            className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 text-white font-semibold text-sm hover:border-white/40 hover:bg-white/10 transition-all hover:scale-105"
+          >
+            <FaGlobe size={16} /> Portfolio
+          </a>
         </div>
         <div className="mt-16 pt-8 border-t border-white/[0.06] text-sm text-gray-600">
           Built by <span className="text-[#1CD8D2]">Pranav Sharma</span> · PS Linky Case Study · {new Date().getFullYear()}
