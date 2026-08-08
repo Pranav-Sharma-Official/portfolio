@@ -187,8 +187,8 @@ function HeroSection() {
 
   const buttons = [
     { label: "Live Demo", icon: FaGlobe, href: "https://ps-linky.netlify.app/", primary: true },
-    { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official" },
-    { label: "Docker", icon: FaDocker, href: "https://hub.docker.com/repository/docker/pranavsharmaofficial/ps-linky-url-shortener/general" },
+    { label: "GitHub", icon: FaGithub, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/" },
+    { label: "Docker", icon: FaDocker, href: "https://hub.docker.com/r/pranavsharmaofficial/ps-linky-url-shortener" },
     { label: "Hoppscotch Collection", icon: FaBoxOpen, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/docs/Hoppscotch_Export.json" },
     { label: "Summarised Documentation", icon: FaBook, href: "https://github.com/Pranav-Sharma-Official/ps-linky-url-shortener/blob/main/README.md" },
   ];
