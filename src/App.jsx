@@ -39,7 +39,7 @@ function Portfolio() {
       <Projects />
       <Experience />
       <Testimonials />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );
