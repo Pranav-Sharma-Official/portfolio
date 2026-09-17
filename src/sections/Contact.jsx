@@ -9,14 +9,14 @@
 // const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 // const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 
-// export default function Contact() {
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     service: "",
-//     budget: "",
-//     idea: "",
-//   });
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "",
+    budget: "",
+    idea: "",
+  });
 
 //   const [errors, setErrors] = useState({});
 //   const [status, setStatus] = useState(""); // '', 'sending', 'success', 'error'
