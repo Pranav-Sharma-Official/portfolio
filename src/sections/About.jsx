@@ -12,17 +12,24 @@ import { SiLastdotfm } from "react-icons/si";
 // ─── Live IST Clock ──────────────────────────────────────────────────────────
 function LiveClock() {
   const [time, setTime] = useState(new Date());
+
   useEffect(() => {
-    const id = setInterval(() => setTime(new Date()), 1000);
+    const id = setInterval(() => setTime(new Date()), 50);
     return () => clearInterval(id);
   }, []);
 
-  const timeStr = time.toLocaleTimeString("en-IN", {
+  // 1. Generate the time string (which defaults to a dot for ms)
+  let timeStr = time.toLocaleTimeString("en-IN", {
     timeZone: "Asia/Kolkata",
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
+    fractionalSecondDigits: 3,
   });
+
+  // 2. Replace the first dot it finds with a colon
+  timeStr = timeStr.replace(".", ":");
+
   const dateStr = time.toLocaleDateString("en-IN", {
     timeZone: "Asia/Kolkata",
     weekday: "long",
@@ -38,7 +45,6 @@ function LiveClock() {
     </StatCard>
   );
 }
-
 // ─── Last.fm Now Playing ─────────────────────────────────────────────────────
 function NowPlayingWidget() {
   const [data, setData] = useState(null);
