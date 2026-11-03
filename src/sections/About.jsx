@@ -153,7 +153,7 @@ function PreplyCard() {
           className="w-4 h-4 rounded-sm"
         />
       }
-      title="Preply Tutor"
+      title="Preply Super Tutor"
       href="https://preply.com/en/tutor/5555978"
     >
       {/* Overall stars */}
@@ -201,7 +201,7 @@ function PreplyCard() {
 function LinkedInCard() {
   // LinkedIn has no public API — update this number manually
   // Go to your LinkedIn profile → followers count
-  const FOLLOWER_COUNT = "7.3k+"; // ← update this manually
+  const FOLLOWER_COUNT = "7.5k+"; // ← update this manually
 
   return (
     <StatCard
